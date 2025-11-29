@@ -1,5 +1,3 @@
-import { LargeNumberLike } from "crypto";
-
 export interface Confession {
     id: string;
     content: string;
@@ -13,28 +11,28 @@ export interface Confession {
     ip?: string;
 }
 
-export interface Reply{
+export interface Reply {
     id: string;
     confessionId: string;
     content: string;
     timestamp: number;
-    upvotes:number;
+    upvotes: number;
     downvotes: number;
 }
 
-export interface ChatMessage{
+export interface ChatMessage {
     id: string;
     content: string;
     timestamp: number;
     userId: string;
     roomId: string;
-    isReported?: boolean;
+    isReported?: boolean;   
 }
 
-export interface ChatRoom{
+export interface ChatRoom {
     id: string;
     users: string[];
-    message: ChatMessage[];
+    messages: ChatMessage[];
     createdAt: number;
 }
 
@@ -45,9 +43,9 @@ export interface User {
     currentRoom?: string;
 }
 
-export interface Report{
+export interface Report {
     id: string;
-    targetId: string;
+    targetId: string; // confession or message id
     targetType: 'confession' | 'message';
     reason: string;
     timestamp: number;
@@ -56,7 +54,7 @@ export interface Report{
 
 export interface VoteAction {
     targetId: string;
-    targetType: 'confession' | 'message';
+    targetType: 'confession' | 'reply';
     voteType: 'upvote' | 'downvote';
     userId: string;
 }
